@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import { usePokemonData } from "../hooks/usePokemonData";
-import { PokemonData } from "../services/pokemon-service";
+import { usePokemonData } from "../../hooks/usePokemonData";
+import { PokemonData } from "../../services/pokemon-service";
 
 const MAX_VALUES = {
   attack: 134,
@@ -15,7 +15,7 @@ const MAX_VALUES = {
   weight: 4600,
 };
 
-const colorPallet = {
+const colors = {
   bug: {
     primary: "#FF8FB1",
     secondary: "rgba(91,179,24,0.8)",
@@ -86,7 +86,7 @@ const colorPallet = {
   },
 };
 
-export const Card = (): JSX.Element => {
+export default (): JSX.Element => {
   const { pokemonData, loadRandomPokemon } = usePokemonData();
 
   useEffect(() => {
@@ -95,12 +95,12 @@ export const Card = (): JSX.Element => {
 
   if (!pokemonData) return <></>;
 
-  const type = pokemonData?.type1 as keyof typeof colorPallet;
-  const type2 = pokemonData?.type2 as keyof typeof colorPallet;
-  const color = colorPallet[type];
+  const type = pokemonData?.type1 as keyof typeof colors;
+  const type2 = pokemonData?.type2 as keyof typeof colors;
+  const color = colors[type];
 
   const styles = StyleSheet.create({
-    containerBorder: {
+    imageBackground: {
       margin: 8,
       borderWidth: 8,
       borderRadius: 12,
@@ -136,7 +136,7 @@ export const Card = (): JSX.Element => {
       color: "white",
       fontStyle: "italic",
     },
-    titleRow: {
+    row: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
@@ -189,10 +189,10 @@ export const Card = (): JSX.Element => {
       marginHorizontal: 4,
     },
     type2: type2 && {
-      backgroundColor: colorPallet[type2].secondary,
+      backgroundColor: colors[type2].secondary,
       padding: 4,
       borderWidth: 4,
-      borderColor: colorPallet[type2].primary,
+      borderColor: colors[type2].primary,
       borderRadius: 20,
       alignItems: "center",
       height: 28,
@@ -215,9 +215,13 @@ export const Card = (): JSX.Element => {
     measurements: {
       color: "white",
       fontWeight: "400",
-      marginLeft: 8,
       lineHeight: 14,
       fontSize: 14,
+      marginHorizontal: 8,
+    },
+    measurementLabel: {
+      fontWeight: "600",
+      marginRight: 4,
     },
     statsRow: {
       flexDirection: "row",
@@ -238,7 +242,7 @@ export const Card = (): JSX.Element => {
       lineHeight: 14,
       fontSize: 14,
     },
-    statsValueContainer: {
+    valueContainer: {
       backgroundColor: color.primary,
       paddingVertical: 6,
       marginVertical: -6,
@@ -249,7 +253,7 @@ export const Card = (): JSX.Element => {
       width: 45,
       textAlign: "right",
     },
-    statsValue: {
+    value: {
       color: "white",
       fontWeight: "800",
       fontSize: 16,
@@ -290,11 +294,11 @@ export const Card = (): JSX.Element => {
 
   return (
     <ImageBackground
-      style={styles.containerBorder}
+      style={styles.imageBackground}
       source={require("../../assets/background.png")}
     >
       <View style={styles.container}>
-        <View style={styles.titleRow}>
+        <View style={styles.row}>
           <View style={styles.idContainer}>
             <Text style={styles.numberText}>#{pokemonData.id}</Text>
           </View>
@@ -322,14 +326,14 @@ export const Card = (): JSX.Element => {
           </View>
         </View>
         <View style={styles.generalDataField}>
-          <View>
-            <Text style={styles.measurements}>
-              Weight: {pokemonData.weight}
-            </Text>
-            <Text style={styles.measurements}>
-              Height: {pokemonData.height}
-            </Text>
-          </View>
+          <Text style={styles.measurements}>
+            <Text style={styles.measurementLabel}>Weight:</Text>
+            <Text>{pokemonData.weight}</Text>
+          </Text>
+          <Text style={styles.measurements}>
+            <Text style={styles.measurementLabel}>Height:</Text>
+            <Text>{pokemonData.height}</Text>
+          </Text>
         </View>
         <View>
           {stats.map((item) => (
@@ -339,13 +343,13 @@ export const Card = (): JSX.Element => {
               </Text>
               <View
                 style={[
-                  styles.statsValueContainer,
+                  styles.valueContainer,
                   {
                     width: statValueWidth(item?.value, item?.name),
                   },
                 ]}
               >
-                <Text style={styles.statsValue}>{item?.value}</Text>
+                <Text style={styles.value}>{item?.value}</Text>
               </View>
             </View>
           ))}
