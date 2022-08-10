@@ -86,14 +86,14 @@ const colors = {
   },
 };
 
-export default (): JSX.Element => {
+export default (): JSX.Element | null => {
   const { pokemonData, loadRandomPokemon } = usePokemonData();
 
   useEffect(() => {
     loadRandomPokemon();
   }, []);
 
-  if (!pokemonData) return <></>;
+  if (!pokemonData) return null;
 
   const type = pokemonData?.type1 as keyof typeof colors;
   const type2 = pokemonData?.type2 as keyof typeof colors;
@@ -295,7 +295,7 @@ export default (): JSX.Element => {
   return (
     <ImageBackground
       style={styles.imageBackground}
-      source={require("../../assets/background.png")}
+      source={require("../../../assets/background.png")}
     >
       <View style={styles.container}>
         <View style={styles.row}>
