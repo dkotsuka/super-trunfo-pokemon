@@ -3,7 +3,7 @@ import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import { usePokemonData } from "../../hooks/usePokemonData";
 import { PokemonData } from "../../services/pokemon-service";
 
-const MAX_VALUES = {
+const MAX = {
   attack: 134,
   defense: 180,
   height: 88,
@@ -286,9 +286,9 @@ export default (): JSX.Element | null => {
     return str ? str.replace("_", " ") : "";
   };
 
-  const statValueWidth = (value?: number, stat?: keyof typeof MAX_VALUES) => {
+  const statValueWidth = (value?: number, stat?: keyof typeof MAX) => {
     if (!stat || !value) return 45;
-    const valuePercentage = (value / MAX_VALUES[stat]) * 90;
+    const valuePercentage = (value / MAX[stat]) * 90;
     return valuePercentage + 45;
   };
 
