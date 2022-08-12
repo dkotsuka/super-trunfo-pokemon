@@ -5,6 +5,7 @@ import { CardHeader } from "../CardHeader";
 import { CardImage } from "../CardImage";
 import { CardLayout } from "../CardLayout";
 import { CardMeasurements } from "../CardMeasurements";
+import { CardStats } from "../CardStats";
 import { CardTypes } from "../CardTypes";
 
 export const PokemonCard = (): JSX.Element | null => {
@@ -39,6 +40,15 @@ export const PokemonCard = (): JSX.Element | null => {
         color={color}
         weight={pokemonData.weight}
         height={pokemonData.height}
+      />
+      <CardStats
+        color={color}
+        hp={pokemonData.hp}
+        attack={pokemonData.attack}
+        defense={pokemonData.defense}
+        specialAttack={pokemonData.special_attack}
+        specialDefense={pokemonData.special_defense}
+        speed={pokemonData.speed}
       />
     </CardLayout>
   );
