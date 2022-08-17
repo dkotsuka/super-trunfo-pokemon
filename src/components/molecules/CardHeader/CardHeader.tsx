@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { PokemonTypeColor } from "../../theme/colors";
+import { PokemonTypeColor } from "../../../theme/colors";
 import { createStyle } from "./styles";
 
 interface CardHeaderProps {

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { PokemonTypeColor } from "../../../theme/colors";
+import { PokemonTypeColor } from "../../../../theme/colors";
 
 export const createStyle = (color: PokemonTypeColor) => {
   return StyleSheet.create({

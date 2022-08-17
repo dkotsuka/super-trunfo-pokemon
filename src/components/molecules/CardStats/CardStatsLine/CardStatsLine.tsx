@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { MAX_STATS } from "../../../constants/stats";
-import { PokemonTypeColor } from "../../../theme/colors";
+import { MAX_STATS } from "../../../../constants/stats";
+import { PokemonTypeColor } from "../../../../theme/colors";
 import { createStyle } from "./styles";
 
 interface CardStatsLineProps {

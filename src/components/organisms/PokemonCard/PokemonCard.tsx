@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { usePokemonData } from "../../hooks/usePokemonData";
-import { colors } from "../../theme/colors";
-import { CardHeader } from "../CardHeader";
-import { CardImage } from "../CardImage";
-import { CardLayout } from "../CardLayout";
-import { CardMeasurements } from "../CardMeasurements";
-import { CardStats } from "../CardStats";
-import { CardTypes } from "../CardTypes";
+import { usePokemonData } from "../../../hooks/usePokemonData";
+import { colors } from "../../../theme/colors";
+import {
+  CardLayout,
+  CardImage,
+  CardTypes,
+  CardMeasurements,
+  CardStats,
+  CardHeader,
+} from "../../molecules";
 
 export const PokemonCard = (): JSX.Element | null => {
   const { pokemonData, loadRandomPokemon } = usePokemonData();

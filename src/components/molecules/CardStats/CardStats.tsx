@@ -1,5 +1,5 @@
 import React from "react";
-import { PokemonTypeColor } from "../../theme/colors";
+import { PokemonTypeColor } from "../../../theme/colors";
 import { CardStatsLine } from "./CardStatsLine";
 
 interface CardStatsProps {
