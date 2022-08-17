@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import { usePokemonData } from "../../hooks/usePokemonData";
-import { PokemonData } from "../../services/pokemon-service";
+import { usePokemonData } from "../../src/hooks/usePokemonData";
+import { PokemonData } from "../../src/services/pokemon-service";
 
 const MAX = {
   attack: 134,
