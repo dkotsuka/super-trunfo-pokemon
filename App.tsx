@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { PokemonCard } from "./components/organisms";
+import { PokemonCard } from "./src/components/organisms";
 
 const styles = StyleSheet.create({
   container: {

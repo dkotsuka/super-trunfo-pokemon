@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect } from "react";
-import { ImageBackground, StyleSheet, View } from "react-native";
-import { usePokemonData } from "../../hooks/usePokemonData";
-import { colors, PokemonTypeColor } from "../../theme/colors";
+import { ImageBackground, View } from "react-native";
+import { usePokemonData } from "../../../hooks/usePokemonData";
+import { PokemonTypeColor } from "../../../theme/colors";
 import { createStyle } from "./styles";
 
 interface CardLayoutProps {
@@ -26,7 +26,7 @@ export const CardLayout = ({
   return (
     <ImageBackground
       style={styles.imageBackground}
-      source={require("../../../assets/background.png")}
+      source={require("../../../../assets/background.png")}
     >
       <View style={styles.container}>{children}</View>
     </ImageBackground>
