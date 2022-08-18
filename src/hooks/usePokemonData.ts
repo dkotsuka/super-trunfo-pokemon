@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { fetchPokemon, PokemonData } from "../services/pokemon-service";
+import { PokemonData } from "../types/dataTypes";
+import { fetchPokemon } from "../services/pokemon-service";
 
 export const usePokemonData = () => {
   const [pokemonData, setPokemonData] = useState<PokemonData>();

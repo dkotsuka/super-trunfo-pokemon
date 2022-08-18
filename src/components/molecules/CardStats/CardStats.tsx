@@ -1,38 +1,32 @@
 import React from "react";
-import { PokemonTypeColor } from "../../../theme/colors";
+import { useDeckContext } from "../../../contexts";
 import { CardStatsLine } from "./CardStatsLine";
 
-interface CardStatsProps {
-  color: PokemonTypeColor;
-  hp: number;
-  attack: number;
-  defense: number;
-  specialAttack: number;
-  specialDefense: number;
-  speed: number;
-}
+export const CardStats = (): JSX.Element => {
+  const { currentCard } = useDeckContext();
 
-export const CardStats = ({
-  color,
-  hp,
-  attack,
-  defense,
-  specialAttack,
-  specialDefense,
-  speed,
-}: CardStatsProps): JSX.Element => {
+  const {
+    type1Colors: color,
+    hp,
+    attack,
+    defense,
+    special_attack: specialAttack,
+    special_defense: specialDefense,
+    speed,
+  } = currentCard;
+
   return (
     <>
       <CardStatsLine label="hp" value={hp} color={color} />
       <CardStatsLine label="attack" value={attack} color={color} />
       <CardStatsLine label="defense" value={defense} color={color} />
       <CardStatsLine
-        label="special_attack"
+        label="special attack"
         value={specialAttack}
         color={color}
       />
       <CardStatsLine
-        label="special_defense"
+        label="special defense"
         value={specialDefense}
         color={color}
       />

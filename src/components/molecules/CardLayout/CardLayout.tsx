@@ -1,27 +1,19 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { ImageBackground, View } from "react-native";
-import { usePokemonData } from "../../../hooks/usePokemonData";
-import { PokemonTypeColor } from "../../../theme/colors";
+import { useDeckContext } from "../../../contexts";
 import { createStyle } from "./styles";
 
 interface CardLayoutProps {
   children?: ReactNode;
-  color: PokemonTypeColor;
 }
 
 export const CardLayout = ({
   children,
-  color,
 }: CardLayoutProps): JSX.Element | null => {
-  const { pokemonData, loadRandomPokemon } = usePokemonData();
+  const { currentCard } = useDeckContext();
+  const styles = createStyle(currentCard.type1Colors);
 
-  useEffect(() => {
-    loadRandomPokemon();
-  }, []);
-
-  if (!pokemonData) return null;
-
-  const styles = createStyle(color);
+  if (!currentCard) return null;
 
   return (
     <ImageBackground

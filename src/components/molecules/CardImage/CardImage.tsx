@@ -1,20 +1,16 @@
 import React from "react";
 import { Image, View } from "react-native";
-import { PokemonTypeColor } from "../../theme/colors";
+import { useDeckContext } from "../../../contexts";
 import { createStyle } from "./styles";
 
-interface CardImageProps {
-  color: PokemonTypeColor;
-  imageUrl: string;
-}
-
-export const CardImage = ({ color, imageUrl }: CardImageProps): JSX.Element => {
-  const styles = createStyle(color);
+export const CardImage = (): JSX.Element => {
+  const { currentCard } = useDeckContext();
+  const styles = createStyle(currentCard.type1Colors);
   return (
     <View style={styles.imageContainer}>
       <View style={styles.imageForm} />
       <Image
-        source={{ uri: imageUrl }}
+        source={{ uri: currentCard.image }}
         style={styles.image}
         resizeMode="contain"
         resizeMethod="scale"

@@ -1,26 +1,18 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { PokemonTypeColor } from "../../../theme/colors";
+import { useDeckContext } from "../../../contexts";
 import { createStyle } from "./styles";
 
-interface CardHeaderProps {
-  color: PokemonTypeColor;
-  pokemonId: number;
-  pokemonName: string;
-}
+export const CardHeader = (): JSX.Element => {
+  const { currentCard } = useDeckContext();
+  const styles = createStyle(currentCard.type1Colors);
 
-export const CardHeader = ({
-  color,
-  pokemonId,
-  pokemonName,
-}: CardHeaderProps): JSX.Element => {
-  const styles = createStyle(color);
   return (
     <View style={styles.row}>
       <View style={styles.idContainer}>
-        <Text style={styles.numberText}>#{pokemonId}</Text>
+        <Text style={styles.numberText}>#{currentCard.id}</Text>
       </View>
-      <Text style={styles.title}>{pokemonName.toUpperCase()}</Text>
+      <Text style={styles.title}>{currentCard.name?.toUpperCase()}</Text>
     </View>
   );
 };

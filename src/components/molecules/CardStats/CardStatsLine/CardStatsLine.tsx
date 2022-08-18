@@ -13,10 +13,6 @@ interface CardStatsLineProps {
 export const CardStatsLine = ({ color, label, value }: CardStatsLineProps) => {
   const styles = createStyle(color);
 
-  const formatLabel = (str?: string) => {
-    return str ? str.replace("_", " ") : "";
-  };
-
   const statValueWidth = (value?: number, stat?: string) => {
     if (!stat || !value) return 45;
     const valuePercentage =
@@ -26,7 +22,7 @@ export const CardStatsLine = ({ color, label, value }: CardStatsLineProps) => {
 
   return (
     <View style={styles.statsRow}>
-      <Text style={styles.statsName}>{formatLabel(label.toUpperCase())}</Text>
+      <Text style={styles.statsName}>{label.toUpperCase()}</Text>
       <View
         style={[
           styles.valueContainer,

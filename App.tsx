@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { PokemonCard } from "./src/components/organisms";
+import { CardPage } from "./src/screens";
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      <PokemonCard />
+      <CardPage />
     </View>
   );
 }
