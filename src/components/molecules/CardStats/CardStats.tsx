@@ -3,17 +3,17 @@ import { useDeckContext } from "../../../contexts";
 import { CardStatsLine } from "./CardStatsLine";
 
 export const CardStats = (): JSX.Element => {
-  const { currentCard } = useDeckContext();
-
   const {
-    type1Colors: color,
-    hp,
-    attack,
-    defense,
-    special_attack: specialAttack,
-    special_defense: specialDefense,
-    speed,
-  } = currentCard;
+    currentCard: {
+      type1Colors: color,
+      hp,
+      attack,
+      defense,
+      special_attack: specialAttack,
+      special_defense: specialDefense,
+      speed,
+    },
+  } = useDeckContext();
 
   return (
     <>
