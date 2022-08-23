@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, Text, View } from "react-native";
-import { MAX_STATS } from "../../../../constants/stats";
 import { PokemonTypeColor } from "../../../../theme/colors";
 import { createStyle } from "./styles";
 import { statValueWidth } from "./utils";
