@@ -31,7 +31,12 @@ export const CardStatsLine = ({ color, label, value }: CardStatsLineProps) => {
         style={[
           styles.valueContainer,
           {
-            width: Animated.multiply(animatedValue, finalValue),
+            width: finalValue,
+            transform: [
+              {
+                scaleX: animatedValue,
+              },
+            ],
           },
         ]}
       >
