@@ -5,7 +5,7 @@ import { CardPage } from "./src/screens";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#666",
+    backgroundColor: "#CDCDCD",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",

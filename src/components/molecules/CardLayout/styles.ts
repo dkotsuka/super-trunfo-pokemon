@@ -14,6 +14,7 @@ export const createStyle = (color: PokemonTypeColor) =>
         height: 4,
       },
       shadowRadius: 16,
+      elevation: 5,
     },
     container: {
       borderRadius: 4,
