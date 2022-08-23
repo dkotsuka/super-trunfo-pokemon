@@ -31,13 +31,14 @@ export const createStyle = (color: PokemonTypeColor) => {
       borderRadius: 16,
       borderBottomLeftRadius: 0,
       width: 45,
-      textAlign: "right",
     },
     value: {
       color: "white",
       fontWeight: "800",
       fontSize: 16,
       lineHeight: 16,
+      minWidth: 35,
+      textAlign: "right",
     },
   });
 };

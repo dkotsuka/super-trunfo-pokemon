@@ -1,8 +1,9 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { Animated, Text, View } from "react-native";
 import { MAX_STATS } from "../../../../constants/stats";
 import { PokemonTypeColor } from "../../../../theme/colors";
 import { createStyle } from "./styles";
+import { statValueWidth } from "./utils";
 
 interface CardStatsLineProps {
   color: PokemonTypeColor;
@@ -13,26 +14,32 @@ interface CardStatsLineProps {
 export const CardStatsLine = ({ color, label, value }: CardStatsLineProps) => {
   const styles = createStyle(color);
 
-  const statValueWidth = (value?: number, stat?: string) => {
-    if (!stat || !value) return 45;
-    const valuePercentage =
-      (value / MAX_STATS[stat as keyof typeof MAX_STATS]) * 90;
-    return valuePercentage + 45;
-  };
+  const animatedValue = useRef(new Animated.Value(0)).current;
+  const finalValue = statValueWidth(value, label);
+
+  useEffect(() => {
+    Animated.spring(animatedValue, {
+      toValue: 1,
+      bounciness: 15,
+      useNativeDriver: true,
+    }).start();
+  }, [label, value]);
 
   return (
     <View style={styles.statsRow}>
       <Text style={styles.statsName}>{label.toUpperCase()}</Text>
-      <View
+      <Animated.View
         style={[
           styles.valueContainer,
           {
-            width: statValueWidth(value, label),
+            width: Animated.multiply(animatedValue, finalValue),
           },
         ]}
       >
-        <Text style={styles.value}>{value}</Text>
-      </View>
+        <Animated.Text style={[styles.value, { opacity: animatedValue }]}>
+          {value}
+        </Animated.Text>
+      </Animated.View>
     </View>
   );
 };
